@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ Accordion Card</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+    body{
+      font-family: 'Kumbh Sans', sans-serif;
+      font-size: 12px;
+      padding: 0;
+      margin: 0;
+      height: 100vh;
+      background: rgb(175,103,233);
+      background: linear-gradient(180deg, rgba(175,103,233,1) 0%, rgba(101,101,231,1) 100%);
+      background-repeat: no-repeat;
+    }
+    h1{
+      margin: 50px;
+      margin-left: 0;
+      margin-bottom: 30px;
+    }
+    .mainbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+    hr{
+      border-top: 0.1px solid hsl(240, 5%, 91%);
+    }
+    .mainitem{
+      display: flex;
+      flex-wrap: wrap;
+      width: 800px;
+      height: 400px;
+      background-color: white;
+      border-radius: 15px;
+    }
+    .faqitem{
+      display: block;
+      width: 50%;
+    }
+    .left{
+      background: url("images/illustration-woman-online-desktop.svg"),url("images/bg-pattern-desktop.svg");
+      background-size: 372px 259px,766px 720px;
+      background-position: right 80px bottom 75px,right 70px bottom -100px;
+      background-repeat: no-repeat;
+    }
+    .illustrationbox{
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .illustrationbox img{
+      position: absolute;
+      top: 35%;
+      left: -90px;
+     
+    }
+    .content{
+      overflow: hidden;
+      max-height: 0px;
+      transition: max-height 0.5s ease-out;
+      padding-left: 6px;
+      color: hsl(240, 6%, 50%);
+    }
+    
+    .faqdetailitem{
+      display: flex;
+      flex-wrap: wrap;
+      width: 80%;
+    }
+    .faqdetailitem hr{
+      width: 100%;
+    }
+    button{
+      position: relative;
+      text-align: left;
+      background-color: white;
+      color: hsl(240, 6%, 50%);
+      border: 0;
+      width: 100%;
+      font-family: 'Kumbh Sans', sans-serif;
+    }
+    .active{
+      color:hsl(238, 29%, 16%);
+      font-weight: 700;
+    }
+    button:hover{
+      color:hsl(14, 88%, 65%);
+    }
+    .collapsible img{
+      position: absolute;
+      top: 30%;
+      right: 0;
+    }
+    @media screen and (max-width:800px) {
+      .faqitem{
+      width: 100%;
+    }
+    .mainitem{
+      width: 350px;
+      height: 500px;
+    }
+    .faqdetailitem{
+      justify-content: center;
+      margin-left: 10%;
+    }
+    .faqitembox{
+      height: 300px;
+    }
+    .left{
+      background: url("#"),url("images/bg-pattern-mobile.svg");
+      background-size: 372px 259px,220px 84px;
+      background-position: right 0px bottom 0px,right 70px bottom 0px;
+      background-repeat: no-repeat;
+      overflow: visible;
+    }
+    .illustrationbox img{
+      content: url("images/illustration-woman-online-mobile.svg");
+      width: 300px;
+      height: 160px;
+      top: -80px;
+      left: 20px;
+     
+    }
+    h1{
+      margin: 0;
+      margin: 20px;
+      font-size: 2rem;
+    }
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main class="mainbox">
+    <div class="mainitem">
+      <div class="faqitem left">
+        <div class="illustrationbox">
+          <img src="images/illustration-box-desktop.svg" alt="box">
+        </div>
+      </div>
+      <div class="faqitem">
+       <div class="faqitembox">
+        <div class="faqdetailitem">
+          <h1>FAQ</h1>
+        </div>
+        <div class="faqdetailitem">
+        <button class="collapsible" id="1" onclick="showContent(this.id)">How many team members can I invite?<img id="arrow1" src="images/icon-arrow-down.svg" alt="arrow"></button>
+        <div class="content" id="content1">
+          <p>You can invite up to 2 additional users on the Free plan. There is no limit on 
+            team members for the Premium plan.</p>
+        </div>
+        <hr>
+      </div>
+
+      <div class="faqdetailitem">
+        <button class="collapsible" id="2" onclick="showContent(this.id)">What is the maximum file upload size?<img id="arrow2" src="images/icon-arrow-down.svg" alt="arrow"></button>
+        <div class="content" id="content2">
+          <p>No more than 2GB. All files in your account must fit your allotted storage space.</p>
+        </div>
+        <hr>
+      </div> 
+
+      <div class="faqdetailitem">
+        <button class="collapsible" id="3" onclick="showContent(this.id)">How do I reset my password?<img id="arrow3" src="images/icon-arrow-down.svg" alt="arrow"></button>
+        <div class="content" id="content3">
+          <p>Click “Forgot password” from the login page or “Change password” from your profile page.
+            A reset link will be emailed to you.</p>
+        </div>
+        <hr>
+      </div>
+      
+      <div class="faqdetailitem">
+        <button class="collapsible" id="4" onclick="showContent(this.id)">Can I cancel my subscription?<img id="arrow4" src="images/icon-arrow-down.svg" alt="arrow"></button>
+        <div class="content" id="content4">
+          <p>Yes! Send us a message and we’ll process your request no questions asked.</p>
+        </div>
+        <hr>
+      </div>
+
+      <div class="faqdetailitem">
+        <button class="collapsible" id="5" onclick="showContent(this.id)">Do you provide additional support?<img id="arrow5" src="images/icon-arrow-down.svg" alt="arrow"></button>
+        <div class="content" id="content5">
+          <p>Chat and email support is available 24/7. Phone lines are open during normal business hours.</p>
+        </div>
+        <hr>
+      </div>
+
+       </div>
+      </div>
+    </div>
+  </main>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/ChaiyutK">Chaiyut Kongprawat</a>.
+  </div>
+  <script>
+    function showContent(id){
+      const pageElement = document.getElementById(`content${id}`);
+      for(let i = 1;i<=5 ;i++)
+      {
+        if(i == id && pageElement.style.maxHeight == "100px")
+        {
+          document.getElementById(id).classList.add('active');
+          document.getElementById(`arrow${i}`).style.transform="rotate(180deg)";
+          document.getElementById(`content${i}`).style.maxHeight="100px";
+        }
+        else{
+          document.getElementById(i).classList.remove('active');
+          document.getElementById(`arrow${i}`).style.transform="rotate(0deg)";
+          document.getElementById(`content${i}`).style.maxHeight="0px";
+      }
+      }
+
+      if(pageElement.style.maxHeight == "0px" || pageElement.style.maxHeight == "")
+      {
+        document.getElementById(id).classList.add('active');
+        document.getElementById(`arrow${id}`).style.transform="rotate(180deg)";
+        pageElement.style.maxHeight="100px";
+      }
+      else{
+        
+        document.getElementById(id).classList.remove('active');
+        document.getElementById(`arrow${id}`).style.transform="rotate(0deg)";
+        pageElement.style.maxHeight="0px";
+      }
+      
+    }
+  </script>
+</body>
+</html>
